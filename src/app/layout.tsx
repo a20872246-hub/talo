@@ -12,11 +12,20 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     siteName: "오늘의 타로",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "오늘의 타로 | 세 장의 카드가 전하는 운명의 메시지",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "오늘의 타로 | 세 장의 카드가 전하는 운명의 메시지",
     description: "과거 · 현재 · 미래. 세 장의 타로카드로 오늘의 운세를 무료로 확인하세요.",
+    images: ["/og.png"],
   },
 }
 
