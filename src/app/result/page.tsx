@@ -8,7 +8,7 @@ import MysticIcon from "@/components/MysticIcon"
 import { tarotCards } from "@/data/tarot-cards"
 import { categories } from "@/data/categories"
 import { getLuckyNumber, getLuckyColor, getLuckyDirection } from "@/lib/utils"
-import { Category, TarotCardData } from "@/types/tarot"
+import { Category, TarotCard as TarotCardData } from "@/types/tarot"
 
 interface ParsedCard {
   cardId: number
