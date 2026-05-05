@@ -5,11 +5,7 @@ export const alt = "오늘의 타로 | 세 장의 카드가 전하는 운명의 
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
-export default async function Image() {
-  const notoSerifKR = await fetch(
-    "https://fonts.gstatic.com/s/notoserifjp/v30/xn77YHs72GKoTvER4Gn3b5eMRtWGkp2nDBNIkg.woff2"
-  ).then((res) => res.arrayBuffer())
-
+export default function Image() {
   return new ImageResponse(
     (
       <div
@@ -20,146 +16,236 @@ export default async function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #0a0a0f 0%, #0f0a1a 40%, #0a0f1a 100%)",
+          background: "#0a0a0f",
           position: "relative",
           overflow: "hidden",
+          fontFamily: "serif",
         }}
       >
-        {/* 별 배경 */}
+        {/* 배경 그라디언트 레이어 */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(ellipse 800px 500px at 50% 50%, #120820 0%, #0a0a0f 100%)",
+            display: "flex",
+          }}
+        />
+
+        {/* 중앙 글로우 원 */}
+        <div
+          style={{
+            position: "absolute",
+            width: 560,
+            height: 560,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(251,191,36,0.07) 0%, transparent 70%)",
+            display: "flex",
+          }}
+        />
+
+        {/* 장식 원 1 */}
+        <div
+          style={{
+            position: "absolute",
+            width: 320,
+            height: 320,
+            borderRadius: "50%",
+            border: "1px solid rgba(251,191,36,0.18)",
+            display: "flex",
+          }}
+        />
+        {/* 장식 원 2 */}
+        <div
+          style={{
+            position: "absolute",
+            width: 270,
+            height: 270,
+            borderRadius: "50%",
+            border: "1px solid rgba(251,191,36,0.10)",
+            display: "flex",
+          }}
+        />
+
+        {/* 별 패턴 - 좌측 */}
         {[
-          [80, 60], [200, 120], [340, 40], [500, 90], [650, 30],
-          [780, 110], [920, 55], [1050, 80], [1130, 140], [150, 200],
-          [420, 180], [700, 160], [900, 200], [1100, 220], [60, 300],
-          [280, 350], [550, 280], [820, 320], [1020, 370], [100, 480],
-          [350, 520], [600, 450], [850, 500], [1100, 460], [200, 580],
-          [480, 600], [750, 570], [980, 590],
-        ].map(([x, y], i) => (
+          [60, 55, 3], [140, 100, 2], [45, 200, 2], [100, 320, 3],
+          [30, 420, 2], [180, 480, 2], [90, 570, 3], [200, 150, 2],
+        ].map(([x, y, s], i) => (
           <div
-            key={i}
+            key={`l${i}`}
             style={{
               position: "absolute",
               left: x,
               top: y,
-              width: i % 3 === 0 ? 3 : 2,
-              height: i % 3 === 0 ? 3 : 2,
+              width: s,
+              height: s,
               borderRadius: "50%",
-              background: `rgba(255, 255, 255, ${0.3 + (i % 5) * 0.1})`,
+              background: `rgba(255,255,255,${0.25 + (i % 4) * 0.12})`,
+              display: "flex",
             }}
           />
         ))}
 
-        {/* 상단 장식 라인 */}
+        {/* 별 패턴 - 우측 */}
+        {[
+          [1100, 60, 2], [1050, 180, 3], [1140, 280, 2], [980, 350, 2],
+          [1110, 420, 3], [1020, 510, 2], [1150, 560, 2], [950, 120, 2],
+        ].map(([x, y, s], i) => (
+          <div
+            key={`r${i}`}
+            style={{
+              position: "absolute",
+              left: x,
+              top: y,
+              width: s,
+              height: s,
+              borderRadius: "50%",
+              background: `rgba(255,255,255,${0.25 + (i % 4) * 0.12})`,
+              display: "flex",
+            }}
+          />
+        ))}
+
+        {/* 상단 장식 */}
         <div
           style={{
             position: "absolute",
-            top: 40,
-            left: "50%",
-            transform: "translateX(-50%)",
+            top: 44,
             display: "flex",
             alignItems: "center",
-            gap: 16,
+            gap: 14,
           }}
         >
-          <div style={{ width: 120, height: 1, background: "linear-gradient(to right, transparent, rgba(251,191,36,0.5))" }} />
-          <div style={{ width: 6, height: 6, background: "rgba(251,191,36,0.7)", borderRadius: "50%", transform: "rotate(45deg)" }} />
-          <div style={{ width: 4, height: 4, background: "rgba(251,191,36,0.5)", borderRadius: "50%", transform: "rotate(45deg)" }} />
-          <div style={{ width: 6, height: 6, background: "rgba(251,191,36,0.7)", borderRadius: "50%", transform: "rotate(45deg)" }} />
-          <div style={{ width: 120, height: 1, background: "linear-gradient(to left, transparent, rgba(251,191,36,0.5))" }} />
+          <div
+            style={{
+              width: 140,
+              height: 1,
+              background:
+                "linear-gradient(to right, transparent, rgba(251,191,36,0.55))",
+              display: "flex",
+            }}
+          />
+          <div
+            style={{
+              fontSize: 11,
+              color: "rgba(251,191,36,0.55)",
+              letterSpacing: "0.35em",
+              display: "flex",
+            }}
+          >
+            ✦  ✦  ✦
+          </div>
+          <div
+            style={{
+              width: 140,
+              height: 1,
+              background:
+                "linear-gradient(to left, transparent, rgba(251,191,36,0.55))",
+              display: "flex",
+            }}
+          />
         </div>
 
-        {/* 배경 원형 글로우 */}
+        {/* 달 SVG */}
         <div
           style={{
-            position: "absolute",
-            width: 500,
-            height: 500,
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(251,191,36,0.06) 0%, transparent 70%)",
+            marginBottom: 24,
+            display: "flex",
+            position: "relative",
+            filter: "drop-shadow(0 0 18px rgba(251,191,36,0.55))",
           }}
-        />
-
-        {/* 외곽 원 장식 */}
-        <div
-          style={{
-            position: "absolute",
-            width: 280,
-            height: 280,
-            borderRadius: "50%",
-            border: "1px solid rgba(251,191,36,0.15)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            width: 240,
-            height: 240,
-            borderRadius: "50%",
-            border: "1px solid rgba(251,191,36,0.1)",
-          }}
-        />
-
-        {/* 달 심볼 */}
-        <div style={{ display: "flex", marginBottom: 28, position: "relative" }}>
-          <svg width="72" height="72" viewBox="0 0 24 24" fill="none">
+        >
+          <svg width="68" height="68" viewBox="0 0 24 24" fill="none">
             <path
               d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-              fill="rgba(251,191,36,0.9)"
-              style={{ filter: "drop-shadow(0 0 12px rgba(251,191,36,0.6))" }}
+              fill="rgba(251,191,36,0.92)"
             />
           </svg>
-          {/* 별 장식 */}
-          <div style={{ position: "absolute", top: -8, right: -10, fontSize: 14, color: "rgba(251,191,36,0.8)" }}>✦</div>
-          <div style={{ position: "absolute", bottom: -4, left: -12, fontSize: 10, color: "rgba(251,191,36,0.6)" }}>✦</div>
         </div>
 
         {/* 메인 타이틀 */}
         <div
           style={{
-            fontSize: 72,
+            fontSize: 74,
             fontWeight: 700,
             color: "#fbbf24",
-            letterSpacing: "0.15em",
-            textShadow: "0 0 20px rgba(251,191,36,0.6), 0 0 40px rgba(251,191,36,0.3)",
-            fontFamily: "'Noto Serif JP'",
-            marginBottom: 16,
+            letterSpacing: "0.18em",
+            display: "flex",
+            textShadow:
+              "0 0 30px rgba(251,191,36,0.65), 0 0 60px rgba(251,191,36,0.3)",
+            marginBottom: 18,
           }}
         >
           오늘의 타로
         </div>
 
-        {/* 구분선 */}
-        <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}>
-          <div style={{ width: 80, height: 1, background: "rgba(251,191,36,0.4)" }} />
-          <div style={{ fontSize: 14, color: "rgba(251,191,36,0.6)", letterSpacing: "0.3em" }}>✦ ✦ ✦</div>
-          <div style={{ width: 80, height: 1, background: "rgba(251,191,36,0.4)" }} />
+        {/* 황금 구분선 */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 16,
+            marginBottom: 22,
+          }}
+        >
+          <div
+            style={{
+              width: 90,
+              height: 1,
+              background: "rgba(251,191,36,0.45)",
+              display: "flex",
+            }}
+          />
+          <div
+            style={{
+              fontSize: 13,
+              color: "rgba(251,191,36,0.65)",
+              letterSpacing: "0.35em",
+              display: "flex",
+            }}
+          >
+            ✦ ✦ ✦
+          </div>
+          <div
+            style={{
+              width: 90,
+              height: 1,
+              background: "rgba(251,191,36,0.45)",
+              display: "flex",
+            }}
+          />
         </div>
 
         {/* 서브타이틀 */}
         <div
           style={{
-            fontSize: 24,
-            color: "rgba(200,200,220,0.85)",
-            letterSpacing: "0.05em",
-            fontFamily: "'Noto Serif JP'",
-            marginBottom: 14,
+            fontSize: 26,
+            color: "rgba(210,210,230,0.88)",
+            letterSpacing: "0.06em",
+            display: "flex",
+            marginBottom: 30,
           }}
         >
           세 장의 카드가 전하는 운명의 메시지
         </div>
 
         {/* 카테고리 뱃지 */}
-        <div style={{ display: "flex", gap: 12, marginTop: 8 }}>
+        <div style={{ display: "flex", gap: 10 }}>
           {["연애운", "재물운", "직장운", "건강운", "오늘의 운세"].map((cat) => (
             <div
               key={cat}
               style={{
-                padding: "6px 16px",
-                border: "1px solid rgba(251,191,36,0.3)",
-                borderRadius: 20,
-                fontSize: 14,
-                color: "rgba(251,191,36,0.7)",
-                letterSpacing: "0.05em",
-                background: "rgba(251,191,36,0.05)",
+                padding: "7px 18px",
+                border: "1px solid rgba(251,191,36,0.32)",
+                borderRadius: 24,
+                fontSize: 15,
+                color: "rgba(251,191,36,0.75)",
+                letterSpacing: "0.04em",
+                background: "rgba(251,191,36,0.06)",
+                display: "flex",
               }}
             >
               {cat}
@@ -167,34 +253,47 @@ export default async function Image() {
           ))}
         </div>
 
-        {/* 하단 장식 라인 */}
+        {/* 하단 장식 */}
         <div
           style={{
             position: "absolute",
-            bottom: 40,
-            left: "50%",
-            transform: "translateX(-50%)",
+            bottom: 44,
             display: "flex",
             alignItems: "center",
             gap: 16,
           }}
         >
-          <div style={{ width: 120, height: 1, background: "linear-gradient(to right, transparent, rgba(251,191,36,0.5))" }} />
-          <div style={{ fontSize: 13, color: "rgba(251,191,36,0.5)", letterSpacing: "0.2em" }}>過去 · 現在 · 未來</div>
-          <div style={{ width: 120, height: 1, background: "linear-gradient(to left, transparent, rgba(251,191,36,0.5))" }} />
+          <div
+            style={{
+              width: 100,
+              height: 1,
+              background:
+                "linear-gradient(to right, transparent, rgba(251,191,36,0.45))",
+              display: "flex",
+            }}
+          />
+          <div
+            style={{
+              fontSize: 14,
+              color: "rgba(251,191,36,0.45)",
+              letterSpacing: "0.28em",
+              display: "flex",
+            }}
+          >
+            過去 · 現在 · 未來
+          </div>
+          <div
+            style={{
+              width: 100,
+              height: 1,
+              background:
+                "linear-gradient(to left, transparent, rgba(251,191,36,0.45))",
+              display: "flex",
+            }}
+          />
         </div>
       </div>
     ),
-    {
-      ...size,
-      fonts: [
-        {
-          name: "Noto Serif JP",
-          data: notoSerifKR,
-          style: "normal",
-          weight: 700,
-        },
-      ],
-    }
+    size
   )
 }
