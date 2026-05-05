@@ -2,13 +2,21 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "오늘의 타로 | 2026 운세를 카드 한 장으로",
-  description: "2026년, 카드 한 장으로 내 운명을 엿보다. 무료 타로카드 운세 서비스",
-  keywords: ["타로", "운세", "2026운세", "타로카드", "무료운세", "연애운", "재물운"],
+  metadataBase: new URL("https://talo-tan.vercel.app"),
+  title: "오늘의 타로 | 세 장의 카드가 전하는 운명의 메시지",
+  description: "과거 · 현재 · 미래. 세 장의 타로카드로 오늘의 운세를 무료로 확인하세요. 연애운, 재물운, 직장운, 건강운.",
+  keywords: ["타로", "운세", "2026운세", "타로카드", "무료운세", "연애운", "재물운", "직장운", "건강운"],
   openGraph: {
-    title: "오늘의 타로 | 2026 운세를 카드 한 장으로",
-    description: "새해 첫 타로, 무료로 뽑아보세요",
+    title: "오늘의 타로 | 세 장의 카드가 전하는 운명의 메시지",
+    description: "과거 · 현재 · 미래. 세 장의 타로카드로 오늘의 운세를 무료로 확인하세요.",
     type: "website",
+    locale: "ko_KR",
+    siteName: "오늘의 타로",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "오늘의 타로 | 세 장의 카드가 전하는 운명의 메시지",
+    description: "과거 · 현재 · 미래. 세 장의 타로카드로 오늘의 운세를 무료로 확인하세요.",
   },
 }
 
